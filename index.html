@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="All Text 10" />
+  <title>ALL TEXT 10 |Website</title>
+  <link rel="stylesheet" href="index.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="nav-container"> 
+    <button class="nav-button" id="searchBtn" aria-label="Search">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+      </svg>
+    </button>
+    <button class="nav-button" id="menuBtn" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </nav> 
+
+  <div class="search-input" id="searchInput">
+    <input type="text" placeholder="Search..." aria-label="Search input" />
+  </div>
+
+  <div class="menu-list" id="menuList">
+    <ul>
+      <li role="menuitem">Home</li>
+      <li role="menuitem">About</li>
+      <li role="menuitem">Services</li>
+      <li role="menuitem">Contact</li>
+    </ul>
+  </div>
+
+  <header class="header">
+    <h1>ALL TEXT 10</h1>
+    <h2>Website</h2>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <article class="card">
+        <h3 class="blue-text">Feature One</h3>
+        <p>Small description lagay</p>
+      </article>
+      <article class="card">
+        <h3 class="blue-text">Feature Two</h3>
+        <p>Small description lagay</p>
+      </article>
+      <article class="card">
+        <h3 class="blue-text">Feature Three</h3>
+        <p>Small description lagay</p>
+      </article>
+    </div>
+    <section class="mission-section">
+      <div class="grid">
+        <article class="card">
+          <h3 class="blue-text">Our Mission</h3>
+          <p>To spread awareness about how AI affects human occupations and interests while encouraging a balance between automation and human ingenuity. We advocate for maintaining opportunities for meaningful human labor and leisure while ensuring AI serves as a tool for innovation, efficiency, and economic progress.</p>
+        </article>
+        
+        <article class="card">
+          <h3 class="blue-text">Our Vision</h3>
+          <p>Our Vision is to use our current technology such as or video-making platform and website to produce a man-made video and platform to show awareness of a future in which human talent and artificial intelligence coexist peacefully, increasing production without diminishing the importance of human abilities, creativity, and personal fulfillment. In our ideal society, AI will enable people to concentrate on creativity and distinctively human experiences.
+          </p>
+        </article>
+      </div>
+    </section>
+    <figure class="video-wrapper">
+      <video controls poster="wave.jpg" aria-label="Wuthering Waves">
+        <source src="2025-03-08 00-52-30.mp4" type="video/mp4" />
+      </video>
+      </figcaption>
+    </figure>
+    <p>
+                                            FAV GAME KO TO!
+    </p>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <p>© 2025 All Text 10. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const searchBtn = document.getElementById('searchBtn');
+    const menuBtn = document.getElementById('menuBtn');
+    const searchInput = document.getElementById('searchInput');
+    const menuList = document.getElementById('menuList');
+
+    const toggleDropdown = (element, btn) => {
+      const isVisible = element.style.display === 'block';
+      closeAllDropdowns();
+      if (!isVisible) {
+        element.style.display = 'block';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    };
+
+    const closeAllDropdowns = () => {
+      [searchInput, menuList].forEach(element => {
+        element.style.display = 'none';
+        element.previousElementSibling?.setAttribute('aria-expanded', 'false');
+      });
+    };
+
+    searchBtn.addEventListener('click', () => toggleDropdown(searchInput, searchBtn));
+    menuBtn.addEventListener('click', () => toggleDropdown(menuList, menuBtn));
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-container') && 
+          !e.target.closest('.active-dropdown')) {
+        closeAllDropdowns();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAllDropdowns();
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
