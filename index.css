@@ -101,13 +101,11 @@
   .card:nth-child(2) { animation-delay: 0.6s; }
   .card:nth-child(3) { animation-delay: 0.8s; }
 
-  .card {
-  transform: translateY(0) scale(1);
-}
   .card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
+    transform: translateY(-5px);
+    border-color: var(--accent);
+  }
+
   .video-wrapper {
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -141,7 +139,7 @@
     position: fixed;
     display: flex;
     margin: 0 auto;
-    justify-content: flex-start;
+    justify-content: right;
     padding: 0.7rem 0 0.7rem 0;
     padding-right: 2%;
     gap: 1rem;
@@ -150,29 +148,45 @@
     background-color: whitesmoke;
     box-shadow: 0 0 1px 2px rgb(128, 128, 128, 0.5);
   }
-
   .nav-button {
-    transform: scale(1);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    background: var(--primary);
+    border: none;
+    color: var(--light);
+    cursor: pointer;
     transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
   }
-  
+
   .nav-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    background: var(--secondary);
+    transform: translateY(-2px);
   }
-  
+
   .search-input, .menu-list {
     display: none;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: var(--transition);
+    position: fixed;
+    top: 4.5rem;
+    right: 1rem;
+    background: var(--light);
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    z-index: 1000;
+    width: min(90%, 300px);
   }
-  
-  .search-input.active, .menu-list.active {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-    animation: slideDown 0.3s ease-out;
+
+  .search-input input {
+    padding: 0.75rem;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
   }
 
   .menu-list ul {
@@ -211,9 +225,8 @@
   }
 
   @media (max-width: 768px) {
-    .logo-text {
-      font-size: 1rem;
-      padding-left: 1rem;
+    .container {
+      padding: 2rem 1rem;
     }
 
     .header {
@@ -251,56 +264,16 @@
   .active-dropdown {
     display: block !important;
   }
-
+  
   .logo-text {
     margin-right: auto;
     padding-left: 2%;
     font-weight: 700;
     color: var(--primary);
-    font-size: 2rem;
+    font-size: 1.25rem;
     white-space: nowrap;
     display: flex;
     align-items: center;
     animation: fadeUp 1s ease 0.1s forwards;
     opacity: 0;
-  }
-
-  @keyframes slideDown {
-    from {
-      transform: translateY(-20px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
-  
-  @keyframes colorCycle {
-    0% { color: var(--primary); }
-    50% { color: var(--secondary); }
-    100% { color: var(--dark); }
-  }
-
-  .scroll-animate {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: var(--transition);
-  }
-  
-  .scroll-animate.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .video-caption {
-    display: inline-block;
-    animation: colorCycle 4s ease-in-out infinite;
-    font-weight: 600;
   }
