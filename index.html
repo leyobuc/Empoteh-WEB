@@ -112,16 +112,20 @@
     menuBtn.addEventListener('click', () => toggleDropdown(menuList, menuBtn));
 
     document.querySelectorAll('.collapsible-header').forEach(header => {
-    header.addEventListener('click', function() {
+    header.addEventListener('click', function(e) {
+        e.stopPropagation(); 
         const card = this.closest('.collapsible-card');
         card.classList.toggle('active');
     });
 });
-    document.querySelectorAll('.collapsible-card').forEach(otherCard => {
-            if (otherCard !== card) {
-              otherCard.classList.remove('active');
-            }
-          });   
+   
+    document.addEventListener('click', function(e) {
+    if (!e.target.closest('.collapsible-card')) {
+        document.querySelectorAll('.collapsible-card').forEach(card => {
+            card.classList.remove('active');
+        });
+    }
+});   
   </script>
 </body>
 </html>

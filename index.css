@@ -246,8 +246,8 @@
     .footer {
       padding: 2rem 0;
     }
-  }
-
+  } 
+    
   .footer {
     text-align: center;
     padding: 4rem 0;
@@ -281,11 +281,11 @@
   .collapsible-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .collapsible-card.active .collapsible-content {
-    max-height: 500px;
+    max-height: 1000px;
   }
   
   .collapsible-header {
@@ -304,3 +304,15 @@
   .collapsible-card.active .collapsible-header::after {
     transform: rotate(180deg);
   }
+
+  @media (min-width: 769px) {
+    .collapsible-card {
+        position: relative;
+        transition: var(--transition);
+    }
+    
+    .collapsible-card.active {
+        transform: translateY(-5px);
+        border-color: var(--accent);
+    }
+}
