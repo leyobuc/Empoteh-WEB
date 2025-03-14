@@ -277,3 +277,30 @@
     animation: fadeUp 1s ease 0.1s forwards;
     opacity: 0;
   }
+
+  .collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  .collapsible-card.active .collapsible-content {
+    max-height: 500px;
+  }
+  
+  .collapsible-header {
+    cursor: pointer;
+    position: relative;
+    padding-right: 30px;
+  }
+  
+  .collapsible-header::after {
+    content: '▼';
+    position: absolute;
+    right: 0;
+    transition: transform 0.3s ease;
+  }
+  
+  .collapsible-card.active .collapsible-header::after {
+    transform: rotate(180deg);
+  }

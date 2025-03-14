@@ -43,29 +43,32 @@
   <main class="container">
     <div class="grid">
       <article class="card">
-        <h3 class="blue-text">Feature One</h3>
+        <h3 class="blue-text">Feature 1</h3>
         <p>Small description lagay</p>
       </article>
       <article class="card">
-        <h3 class="blue-text">Feature Two</h3>
+        <h3 class="blue-text">Feature 2</h3>
         <p>Small description lagay</p>
       </article>
       <article class="card">
-        <h3 class="blue-text">Feature Three</h3>
+        <h3 class="blue-text">Feature 3</h3>
         <p>Small description lagay</p>
       </article>
     </div>
     <section class="mission-section">
       <div class="grid">
-        <article class="card">
-          <h3 class="blue-text">Mission</h3>
-          <p>To spread awareness about how AI affects human occupations and interests while encouraging a balance between automation and human ingenuity. We advocate for maintaining opportunities for meaningful human labor and leisure while ensuring AI serves as a tool for innovation, efficiency, and economic progress.</p>
+        <article class="card collapsible-card">
+          <h3 class="blue-text collapsible-header">Mission</h3>
+          <div class="collapsible-content">
+            <p>To spread awareness about how AI affects human occupations and interests while encouraging a balance between automation and human ingenuity. We advocate for maintaining opportunities for meaningful human labor and leisure while ensuring AI serves as a tool for innovation, efficiency, and economic progress.</p>
+          </div>
         </article>
         
-        <article class="card">
-          <h3 class="blue-text">Vision</h3>
-          <p>Our Vision is to use our current technology such as or video-making platform and website to produce a man-made video and platform to show awareness of a future in which human talent and artificial intelligence coexist peacefully, increasing production without diminishing the importance of human abilities, creativity, and personal fulfillment. In our ideal society, AI will enable people to concentrate on creativity and distinctively human experiences.
-          </p>
+        <article class="card collapsible-card">
+          <h3 class="blue-text collapsible-header">Vision</h3>
+          <div class="collapsible-content">
+            <p>Our Vision is to use our current technology such as or video-making platform and website to produce a man-made video and platform to show awareness of a future in which human talent and artificial intelligence coexist peacefully, increasing production without diminishing the importance of human abilities, creativity, and personal fulfillment. In our ideal society, AI will enable people to concentrate on creativity and distinctively human experiences.</p>
+          </div>
         </article>
       </div>
     </section>
@@ -83,7 +86,6 @@
   <footer class="footer" role="contentinfo">
     <p>© 2025 All Text 10. All rights reserved.</p>
   </footer>
-
   <script>
     const searchBtn = document.getElementById('searchBtn');
     const menuBtn = document.getElementById('menuBtn');
@@ -109,25 +111,17 @@
     searchBtn.addEventListener('click', () => toggleDropdown(searchInput, searchBtn));
     menuBtn.addEventListener('click', () => toggleDropdown(menuList, menuBtn));
 
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.nav-container') && 
-          !e.target.closest('.active-dropdown')) {
-        closeAllDropdowns();
-      }
+    document.querySelectorAll('.collapsible-header').forEach(header => {
+    header.addEventListener('click', function() {
+        const card = this.closest('.collapsible-card');
+        card.classList.toggle('active');
     });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeAllDropdowns();
-    });
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
+});
+    document.querySelectorAll('.collapsible-card').forEach(otherCard => {
+            if (otherCard !== card) {
+              otherCard.classList.remove('active');
+            }
+          });   
   </script>
 </body>
 </html>
